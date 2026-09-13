@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+         xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
+         xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+         xmlns:mobile="http://schemas.microsoft.com/appx/manifest/mobile/windows10"
+         IgnorableNamespaces="uap mp mobile">
+
+  <Identity Name="KomiKuy"
+            Publisher="CN=Aya"
+            Version="1.0.0.0" />
+
+  <mp:PhoneIdentity PhoneProductId="d9e8f7a6-b5c4-3a2b-1c0d-9e8f7a6b5c4d" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+
+  <Properties>
+    <DisplayName>KomiKuy!</DisplayName>
+    <PublisherDisplayName>Aya</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+    <Description>KomiKuy! - Aplikasi Baca Komik &amp; Manga Terbaik di Windows 10 Mobile</Description>
+  </Properties>
+
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.10586.0" MaxVersionTested="10.0.19041.0" />
+    <TargetDeviceFamily Name="Windows.Mobile" MinVersion="10.0.10586.0" MaxVersionTested="10.0.19041.0" />
+  </Dependencies>
+
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+
+  <Applications>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="Mangaplus.App">
+      <uap:VisualElements
+          DisplayName="KomiKuy!"
+          Square150x150Logo="Assets\Square150x150Logo.png"
+          Square44x44Logo="Assets\Square44x44Logo.png"
+          Description="KomiKuy! - Aplikasi Baca Komik &amp; Manga Terbaik di Windows 10 Mobile"
+          BackgroundColor="#0F1117">
+        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" ShortName="KomiKuy!">
+          <uap:ShowNameOnTiles>
+            <uap:ShowOn Tile="square150x150Logo" />
+            <uap:ShowOn Tile="wide310x150Logo" />
+          </uap:ShowNameOnTiles>
+        </uap:DefaultTile>
+        <uap:SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="#144E13" />
+        <uap:InitialRotationPreference>
+          <uap:Rotation Preference="portrait" />
+        </uap:InitialRotationPreference>
+      </uap:VisualElements>
+    </Application>
+  </Applications>
+
+  <Capabilities>
+    <Capability Name="internetClient" />
+    <Capability Name="internetClientServer" />
+    <Capability Name="privateNetworkClientServer" />
+  </Capabilities>
+</Package>

@@ -1,0 +1,47 @@
+# ==========================================
+# KomiKuy! — .gitignore
+# ==========================================
+
+# Visual Studio & MSBuild
+.vs/
+**/bin/
+**/obj/
+**/AppPackages/
+**/BundleArtifacts/
+_UpgradeReport_Files/
+Backup*/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.ide/
+*.suo.tmp
+
+# Private Developer Certificates & Keys
+*.pfx
+*.pfx.bak
+*.key
+
+# Compiled APPX & MSIX Packages (Distributed via GitHub Releases)
+*.appx
+*.appxbundle
+*.msix
+*.msixbundle
+*.zip
+builds/*_Test/
+
+# NuGet Cache & Locks
+*.lock.json
+project.lock.json
+*.nuget.props
+*.nuget.targets
+
+# Scratch & Research Experiments
+scratch/
+
+# Logs & Temporary Files
+*.log
+*.tmp
+temp_*
+Thumbs.db
+Desktop.ini

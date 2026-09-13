@@ -1,0 +1,27 @@
+<Application
+    x:Class="Mangaplus.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Mangaplus"
+    RequestedTheme="Dark">
+
+    <Application.Resources>
+        <!-- MangaPlus Brand Color Palette -->
+        <Color x:Key="MpRedColor">#D9232E</Color>
+        <SolidColorBrush x:Key="MpRedBrush" Color="#D9232E" />
+        <SolidColorBrush x:Key="MpDarkRedBrush" Color="#A8151E" />
+        
+        <Color x:Key="MpDarkBgColor">#0E0E10</Color>
+        <SolidColorBrush x:Key="MpDarkBgBrush" Color="#0E0E10" />
+        
+        <Color x:Key="MpSurfaceColor">#1A1A1E</Color>
+        <SolidColorBrush x:Key="MpSurfaceBrush" Color="#1A1A1E" />
+
+        <Color x:Key="MpCardColor">#24242A</Color>
+        <SolidColorBrush x:Key="MpCardBrush" Color="#24242A" />
+
+        <SolidColorBrush x:Key="MpGoldBrush" Color="#FFD700" />
+        <SolidColorBrush x:Key="MpMutedTextBrush" Color="#9A9AA2" />
+        <SolidColorBrush x:Key="MpBorderBrush" Color="#303038" />
+    </Application.Resources>
+</Application>

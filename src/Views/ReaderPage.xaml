@@ -1,0 +1,217 @@
+<Page
+    x:Class="Mangaplus.Views.ReaderPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Mangaplus.Views"
+    xmlns:models="using:Mangaplus.Models"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="#000000">
+
+    <Page.Resources>
+        <Storyboard x:Name="SwipeUpStoryboard" RepeatBehavior="Forever">
+            <DoubleAnimation Storyboard.TargetName="SwipeUpTransform"
+                             Storyboard.TargetProperty="Y"
+                             From="25" To="-25"
+                             Duration="0:0:1.0"
+                             EnableDependentAnimation="True"
+                             AutoReverse="True">
+                <DoubleAnimation.EasingFunction>
+                    <SineEase EasingMode="EaseInOut" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="SwipeUpIconContainer"
+                             Storyboard.TargetProperty="Opacity"
+                             From="0.4" To="1.0"
+                             Duration="0:0:0.5"
+                             EnableDependentAnimation="True"
+                             AutoReverse="True" />
+        </Storyboard>
+    </Page.Resources>
+
+    <Grid Background="#000000">
+        <!-- FULLY VIRTUALIZED HARDWARE ACCELERATED READER LISTVIEW WITH CLEAN HORIZONTAL RIBBON BOOKMARK -->
+        <ListView x:Name="ListPages"
+                  SelectionMode="None"
+                  IsItemClickEnabled="False"
+                  Padding="0"
+                  ShowsScrollingPlaceholders="False">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    <Setter Property="Padding" Value="0" />
+                    <Setter Property="Margin" Value="0,0,0,1" />
+                    <Setter Property="MinHeight" Value="0" />
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel HorizontalAlignment="Stretch" Tapped="PageItem_Tapped" Background="Transparent">
+                        <!-- Horizontal Reading Ribbon Banner (Pita Garis Baca) -->
+                        <Border Visibility="{Binding BookmarkVisibility}"
+                                HorizontalAlignment="Stretch"
+                                Margin="0,0,0,2"
+                                Background="#E6B91C1C"
+                                BorderBrush="#EF4444"
+                                BorderThickness="0,2,0,2"
+                                Padding="12,6">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                    <TextBlock Text="{Binding BookmarkLabel}" FontSize="11" FontWeight="Bold" Foreground="#FFFFFF" />
+                                    <TextBlock Text="Posisi terakhir membaca ditandai di halaman ini" FontSize="8.5" Foreground="#FEE2E2" />
+                                </StackPanel>
+
+                                <Border Grid.Column="2" Background="#7F1D1D" CornerRadius="3" Padding="6,3" VerticalAlignment="Center">
+                                    <TextBlock Text="GARIS BACA" FontSize="8.5" FontWeight="Bold" Foreground="#FEF08A" />
+                                </Border>
+                            </Grid>
+                        </Border>
+
+                        <!-- Clean Seamless Manga Page Image -->
+                        <Image Source="{Binding ImageSource}"
+                               Stretch="Uniform"
+                               HorizontalAlignment="Stretch"
+                               MinHeight="350" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <!-- Dynamic Swipe-Up Animation Tutorial Overlay (Auto disappears upon swipe-up/touch) -->
+        <Grid x:Name="PanelSwipeUpOverlay"
+              Background="#99000000"
+              HorizontalAlignment="Stretch"
+              VerticalAlignment="Stretch"
+              Canvas.ZIndex="40"
+              Tapped="SwipeUpOverlay_Tapped"
+              PointerPressed="SwipeUpOverlay_PointerPressed"
+              Visibility="Collapsed">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Grid Height="140" Width="100" HorizontalAlignment="Center">
+                    <StackPanel x:Name="SwipeUpIconContainer" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <StackPanel.RenderTransform>
+                            <TranslateTransform x:Name="SwipeUpTransform" Y="20" />
+                        </StackPanel.RenderTransform>
+                        <TextBlock Text="▲" FontSize="18" Foreground="#60A5FA" HorizontalAlignment="Center" Margin="0,0,0,2" />
+                        <TextBlock Text="▲" FontSize="14" Foreground="#3B82F6" HorizontalAlignment="Center" Margin="0,0,0,6" Opacity="0.7" />
+                        <Image Source="ms-appx:///Assets/SwipeUp/images/image_0.webp"
+                               Width="64"
+                               Height="64"
+                               Stretch="Uniform"
+                               HorizontalAlignment="Center" />
+                    </StackPanel>
+                </Grid>
+                <Border Background="#222530" CornerRadius="16" Padding="14,6" Margin="0,12,0,0" BorderBrush="#3B82F6" BorderThickness="1" HorizontalAlignment="Center">
+                    <TextBlock Text="Usap ke atas untuk membaca" FontSize="11" FontWeight="SemiBold" Foreground="#FFFFFF" HorizontalAlignment="Center" />
+                </Border>
+            </StackPanel>
+        </Grid>
+
+        <!-- Toast Notification Banner for Bookmark Prompt & Confirmation -->
+        <Border x:Name="PanelToastBookmark"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Center"
+                Margin="0,52,0,0"
+                Background="#181B24"
+                BorderBrush="#DC2626"
+                BorderThickness="1.5"
+                CornerRadius="16"
+                Padding="14,6"
+                Visibility="Collapsed"
+                Canvas.ZIndex="35">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock x:Name="TxtToastMessage" Text="Garis baca ditandai pada bab ini!" FontSize="10" FontWeight="Bold" Foreground="#FFFFFF" VerticalAlignment="Center" />
+            </StackPanel>
+        </Border>
+
+        <!-- Top Inline Loading Bar -->
+        <ProgressBar x:Name="BarLoading" VerticalAlignment="Top" IsIndeterminate="True" Height="3" Foreground="#2563EB" Background="Transparent" Visibility="Collapsed" Canvas.ZIndex="30" />
+
+        <!-- Empty Chapter Notice Overlay -->
+        <Grid x:Name="PanelLockedNotice" Background="#E6000000" Visibility="Collapsed" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Canvas.ZIndex="25">
+            <Border Background="#181B24" BorderBrush="#262A36" BorderThickness="1" Width="280" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="16,14" CornerRadius="4">
+                <StackPanel>
+                    <TextBlock Text="&#xE736;" FontFamily="Segoe MDL2 Assets" FontSize="26" Foreground="#38BDF8" HorizontalAlignment="Center" Margin="0,0,0,6" />
+                    <TextBlock Text="KOMIK KUY! NOTICE" FontSize="11" FontWeight="Bold" FontFamily="Segoe UI" Foreground="#2563EB" HorizontalAlignment="Center" Margin="0,0,0,4" />
+                    <TextBlock x:Name="TxtLockedMsg" Text="Halaman chapter ini belum dapat dimuat dari server. Silakan coba buka chapter lain." FontSize="10.5" Foreground="#D0D0D0" TextAlignment="Center" TextWrapping="Wrap" LineHeight="15" Margin="0,0,0,12" />
+                    
+                    <Button Click="BtnBack_Click" Background="#2563EB" Foreground="#FFFFFF" Padding="12,5" HorizontalAlignment="Stretch">
+                        <TextBlock Text="KEMBALI KE DAFTAR BAB" FontSize="10" FontWeight="Bold" FontFamily="Segoe UI" HorizontalAlignment="Center" />
+                    </Button>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <!-- Compact Top Floating Overlay Bar -->
+        <Border x:Name="TopBar"
+                VerticalAlignment="Top"
+                Background="#F0111318"
+                BorderBrush="#262A36"
+                BorderThickness="0,0,0,1"
+                Padding="8,4"
+                Canvas.ZIndex="20">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0" Click="BtnBack_Click" Background="Transparent" BorderThickness="0" Padding="6,2" MinWidth="0" MinHeight="0">
+                    <TextBlock Text="←" FontSize="16" FontWeight="Bold" Foreground="#FFFFFF" />
+                </Button>
+
+                <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="6,0">
+                    <TextBlock x:Name="TxtChapterTitle" Text="Chapter Title" FontSize="11.5" FontWeight="Bold" Foreground="#FFFFFF" TextTrimming="CharacterEllipsis" />
+                    <TextBlock x:Name="TxtMangaTitle" Text="Manga Title" FontSize="9" Foreground="#8E95A5" TextTrimming="CharacterEllipsis" />
+                </StackPanel>
+
+                <!-- Button Tandai Garis Baca (Click to activate touch-to-mark mode) -->
+                <Button x:Name="BtnBookmarkToggle" Grid.Column="2" Click="BtnToggleBookmark_Click" Background="#DC2626" Foreground="#FFFFFF" Padding="7,2" Margin="0,0,4,0" MinWidth="0" MinHeight="0">
+                    <TextBlock x:Name="TxtBtnBookmark" Text="Garis Baca" FontSize="9" FontWeight="Bold" VerticalAlignment="Center" />
+                </Button>
+
+                <Border Grid.Column="3" Background="#181B24" CornerRadius="2" Padding="6,2" VerticalAlignment="Center">
+                    <TextBlock x:Name="TxtPageCount" Text="0 Hal" FontSize="9.5" FontWeight="Bold" Foreground="#60A5FA" />
+                </Border>
+            </Grid>
+        </Border>
+
+        <!-- Compact Bottom Floating Overlay Bar -->
+        <Border x:Name="BottomBar"
+                VerticalAlignment="Bottom"
+                Background="#F0111318"
+                BorderBrush="#262A36"
+                BorderThickness="0,1,0,0"
+                Padding="8,4"
+                Canvas.ZIndex="20">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <!-- Previous Chapter Button -->
+                <Button x:Name="BtnPrevChapter" Grid.Column="0" Click="BtnPrevChapter_Click" Background="#181B24" Foreground="#FFFFFF" Padding="10,3" MinWidth="0" MinHeight="0">
+                    <TextBlock x:Name="TxtPrevBtnLabel" Text="SEBELUMNYA" FontSize="9.5" FontWeight="Bold" />
+                </Button>
+
+                <TextBlock x:Name="TxtReaderHint" Grid.Column="1" Text="Ketuk layar untuk sembunyikan bar" FontSize="8.5" Foreground="#8E95A5" HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+                <!-- Next Chapter Button -->
+                <Button x:Name="BtnNextChapter" Grid.Column="2" Click="BtnNextChapter_Click" Background="#2563EB" Foreground="#FFFFFF" Padding="10,3" MinWidth="0" MinHeight="0">
+                    <TextBlock x:Name="TxtNextBtnLabel" Text="SELANJUTNYA" FontSize="9.5" FontWeight="Bold" />
+                </Button>
+            </Grid>
+        </Border>
+    </Grid>
+</Page>
