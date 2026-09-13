@@ -21,6 +21,9 @@ Backup*/
 *.pfx
 *.pfx.bak
 *.key
+*.token
+*.secret
+*.env
 
 # Compiled APPX & MSIX Packages (Distributed via GitHub Releases)
 *.appx
