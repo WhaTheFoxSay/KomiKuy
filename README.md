@@ -18,7 +18,7 @@ A native Universal Windows Platform (UWP) comic and manga reader for Windows 10 
 
 ## Overview
 
-KomiKuy is a lightweight comic and manga reader developed for Windows 10 Mobile and Windows 10 desktop devices. Built with native C# and XAML on the Universal Windows Platform (UWP), the application is optimized to run efficiently on resource-constrained hardware such as Lumia devices with 1 GB of RAM (Snapdragon 200/400).
+KomiKuy is a free comic and manga reader app built for Windows 10 Mobile and Windows 10 devices. Designed with ease of use in mind, it lets you discover, search, and read your favorite titles directly on your phone or PC with smooth and responsive performance.
 
 ---
 
@@ -55,14 +55,13 @@ KomiKuy is a lightweight comic and manga reader developed for Windows 10 Mobile 
 
 ## Key Features
 
-- **Local Catalog Cache**: Includes an offline base catalog and two-tier caching (memory and local disk storage) to ensure fast startup without blocking the user interface.
-- **Custom HTML Parser**: Employs a zero-dependency, lightweight string-scanning parser (`FastHtmlParser.cs`) designed for low memory overhead and rapid metadata extraction.
-- **Content Classification**: Categorizes titles into Manga, Manhwa, and Manhua based on metadata and slug indicators.
-- **Continuous Vertical Reader**: Provides a vertical scroll reading interface tailored for webtoons and digital comics.
-- **Controlled Memory Footprint**: Implements display-level image downsampling (`DecodePixelWidth`) to prevent out-of-memory errors on devices with limited RAM.
-- **Reading Progress Tracking**: Records chapter and page positions locally for bookmarking and resuming reading sessions.
-- **Dark Theme Interface**: Uses an AMOLED dark palette (`#000000` / `#0F1117`) to reduce display power consumption on OLED panels.
-- **Protobuf and XOR Decryption Support**: Contains an internal Protocol Buffers reader and XOR stream decryptor for supported web API endpoints.
+- **Fast & Responsive Startup**: Opens immediately without long loading screens. Catalogs and cover artwork are cached locally so you can browse titles smoothly even on slow connections.
+- **Manga, Manhwa, and Manhua**: Browse thousands of titles organized into Japanese Manga, Korean Webtoons (Manhwa), and Chinese Manhua with Indonesian translations.
+- **Comfortable Vertical Reader**: Read with smooth continuous vertical scrolling, designed specifically for convenient one-handed reading on mobile screens.
+- **Lightweight & Battery Friendly**: Runs smoothly on older phones (including devices with 512 MB or 1 GB of RAM like the Lumia 535) without lagging or draining battery quickly.
+- **Automatic Bookmarks & Resume**: Automatically saves your last read chapter and page position so you can pick up exactly where you left off.
+- **Genre Search & Filtering**: Search titles easily by name or browse through popular categories such as Action, Adventure, Fantasy, Romance, and Sci-Fi.
+- **Eye-Friendly Dark Mode**: Uses a clean dark theme designed for comfortable reading in low light while saving battery life on OLED and LCD displays.
 
 ---
 
@@ -99,7 +98,9 @@ KomiKuy is a lightweight comic and manga reader developed for Windows 10 Mobile 
 
 ---
 
-## Building from Source
+## Building from Source (Optional / For Contributors)
+
+*Note: You do not need to build the project yourself to use KomiKuy. Regular users can simply download and install the ready-to-use package from the [Releases](https://github.com/WhaTheFoxSay/KomiKuy/releases) page by following the installation guide above.*
 
 ### Prerequisites
 - Visual Studio 2019 or Visual Studio 2022
