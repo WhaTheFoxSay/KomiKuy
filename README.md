@@ -22,6 +22,37 @@ KomiKuy is a lightweight comic and manga reader developed for Windows 10 Mobile 
 
 ---
 
+## Screenshots
+
+<div align="center">
+  <table>
+    <tr>
+      <td align="center" width="20%">
+        <img src="docs/screenshots/01_manga_catalog.png" alt="Catalog Grid" /><br />
+        <sub><b>Catalog Grid</b></sub>
+      </td>
+      <td align="center" width="20%">
+        <img src="docs/screenshots/02_popular_rankings.png" alt="Popular Rankings" /><br />
+        <sub><b>Popular Rankings</b></sub>
+      </td>
+      <td align="center" width="20%">
+        <img src="docs/screenshots/03_title_detail.png" alt="Title Details" /><br />
+        <sub><b>Title Details</b></sub>
+      </td>
+      <td align="center" width="20%">
+        <img src="docs/screenshots/04_genre_browse.png" alt="Genre Browse" /><br />
+        <sub><b>Genre Browse</b></sub>
+      </td>
+      <td align="center" width="20%">
+        <img src="docs/screenshots/05_vertical_reader.png" alt="Vertical Reader" /><br />
+        <sub><b>Vertical Reader</b></sub>
+      </td>
+    </tr>
+  </table>
+</div>
+
+---
+
 ## Key Features
 
 - **Local Catalog Cache**: Includes an offline base catalog and two-tier caching (memory and local disk storage) to ensure fast startup without blocking the user interface.
@@ -99,6 +130,8 @@ KomiKuy/
 ├── build_and_sign.ps1           # Build and signing script
 ├── builds/
 │   └── Aya.cer                  # Public developer certificate
+├── docs/
+│   └── screenshots/             # Application screenshots
 └── src/
     ├── App.xaml / App.xaml.cs   # Application entry point and lifecycle
     ├── Mangaplus.csproj         # UWP C# project file
