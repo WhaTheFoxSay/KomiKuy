@@ -41,6 +41,7 @@ project.lock.json
 
 # Scratch & Research Experiments
 scratch/
+komikuy.md
 
 # Logs & Temporary Files
 *.log
