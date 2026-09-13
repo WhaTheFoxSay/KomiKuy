@@ -79,19 +79,39 @@ KomiKuy is a free comic and manga reader app built for Windows 10 Mobile and Win
 
 ---
 
-## Installation Guide (Windows 10 Mobile)
+## Installation Guide
 
-### 1. Install Developer Certificate
+### Method 1: Install via MetroStore UWP (Recommended)
+
+KomiKuy is officially available on **MetroStore UWP**, the community store client for Windows 10 Mobile and Windows Phone devices. Installing via MetroStore provides direct one-tap installation and updates without manual sideloading.
+
+<div align="center">
+  <a href="https://metrostore.github.io/#">
+    <img src="docs/metrostore.png" alt="Available on MetroStore" width="420" />
+  </a>
+</div>
+
+1. Open or install **MetroStore** on your Windows 10 Mobile device by following the instructions at [metrostore.github.io](https://metrostore.github.io/#).
+2. Search for **KomiKuy** within the store catalog.
+3. Tap **Install** to automatically download, install certificates, and deploy the application package to your device.
+
+---
+
+### Method 2: Manual Installation (Sideloading)
+
+If you prefer to install the application manually without using MetroStore:
+
+#### Step 1: Install Developer Certificate
 1. Download `Aya.cer` from the [Releases](https://github.com/WhaTheFoxSay/KomiKuy/releases) section or the `builds/` directory.
 2. Transfer the certificate to your phone (via USB transfer or Microsoft Edge).
 3. Open the file on your device and install it into the **Trusted Root Certification Authorities** store.
 
-### 2. Enable Developer Mode
+#### Step 2: Enable Developer Mode
 1. Open **Settings** on your phone.
 2. Navigate to **Update & Security** > **For developers**.
 3. Select **Developer mode**.
 
-### 3. Install Application Package
+#### Step 3: Install Application Package
 1. Download `KomiKuy_v1.0.0_ARM.appx` from the [Releases](https://github.com/WhaTheFoxSay/KomiKuy/releases) page.
 2. Open the file using the built-in **File Explorer** app on your phone and confirm the installation.
 3. The application will appear in the App List once installation completes.
@@ -132,6 +152,7 @@ KomiKuy/
 ├── builds/
 │   └── Aya.cer                  # Public developer certificate
 ├── docs/
+│   ├── metrostore.png           # MetroStore badge asset
 │   └── screenshots/             # Application screenshots
 └── src/
     ├── App.xaml / App.xaml.cs   # Application entry point and lifecycle
