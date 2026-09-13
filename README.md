@@ -58,7 +58,7 @@ KomiKuy is a free comic and manga reader app built for Windows 10 Mobile and Win
 - **Fast & Responsive Startup**: Opens immediately without long loading screens. Catalogs and cover artwork are cached locally so you can browse titles smoothly even on slow connections.
 - **Manga, Manhwa, and Manhua**: Browse thousands of titles organized into Japanese Manga, Korean Webtoons (Manhwa), and Chinese Manhua with Indonesian translations.
 - **Comfortable Vertical Reader**: Read with smooth continuous vertical scrolling, designed specifically for convenient one-handed reading on mobile screens.
-- **Lightweight & Battery Friendly**: Runs smoothly on older phones (including devices with 512 MB or 1 GB of RAM like the Lumia 535) without lagging or draining battery quickly.
+- **Lightweight & Battery Friendly**: Optimized for the entire Windows 10 Mobile family—from entry-level devices with 1 GB of RAM (like the Lumia 535) up to flagship models (like the Lumia 950)—ensuring smooth scrolling and low battery consumption.
 - **Automatic Bookmarks & Resume**: Automatically saves your last read chapter and page position so you can pick up exactly where you left off.
 - **Genre Search & Filtering**: Search titles easily by name or browse through popular categories such as Action, Adventure, Fantasy, Romance, and Sci-Fi.
 - **Eye-Friendly Dark Mode**: Uses a clean dark theme designed for comfortable reading in low light while saving battery life on OLED and LCD displays.
